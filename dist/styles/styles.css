@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  font-family: Lato; }
+
+body {
+  background-color: #51a2b8; }
+
+input:focus {
+  outline: none; }
+
+button:focus {
+  outline: none; }
+
+#user-div {
+  padding-top: 10%; }
+
+#user-label, #choose-name, #name-btn {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  border: none;
+  color: white; }
+
+#choose-name, #name-btn {
+  background-color: #1d5b6d; }
+
+#user-label {
+  font-size: 40px; }
+
+#choose-name {
+  width: 300px;
+  height: 50px;
+  font-size: 25px; }
+
+#name-btn {
+  width: 150px;
+  height: 25px;
+  font-size: 20px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  font-style: italic; }
+
+.onClick {
+  background-color: #0c252c;
+  color: #c2c2c2; }
+
+/*# sourceMappingURL=styles.css.map */
