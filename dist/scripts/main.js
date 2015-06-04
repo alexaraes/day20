@@ -23,14 +23,14 @@ $(document).on('ready', function() {
 			text: $('#message').val()
 		};
 		$.post(
-			'fathomless-savannah-3396.herokuapp.com/messages',
+			'http://tiny-pizza-server.herokuapp.com/collections/chatapptry/',
 			myMessage
 		);
 	}
 	
 	function getMessages() {
 		$.get(
-			'fathomless-savannah-3396.herokuapp.com/messages',
+			'http://tiny-pizza-server.herokuapp.com/collections/chatapptry/',
 			onMessagesReceived,
 			'json'
 		);
