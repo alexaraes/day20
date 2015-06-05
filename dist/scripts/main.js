@@ -2,29 +2,39 @@ $(document).on('ready', function() {
 
 	var app = Backbone.Router.extend({
 		routes: {
-			'': 'chat',
+			'': 'home',
 			'chat': 'chat'
 		}, 
 
-		chat: function() {
-			console.log('home');
+		home: function() {
+			$('.page').hide();
+			$('#chat-page').hide();
+			$('#user-page').show();
 		}, 
+
+		chat: function() {
+			$('.page').hide();
+			$('#user-page').hide();
+			$('#chat-page').show();
+		}
 
 	});
 
 	var myRouter = new app();
 	Backbone.history.start();
 
-	$('.page').hide();
-	$('#user-page').show();
+	$('#name-btn').click(function() {
+		myRouter.navigate('chat', {trigger: true});
+	});
 
-	$('#my-button').on('click', onButtonClick);
+	$('#my-button').click(onButtonClick);
 
 	function onButtonClick(e) {
 		var myMessage = {
 			username: $('#name').val(),
 			text: $('#message').val()
 		};
+		
 		$.post(
 			'http://tiny-pizza-server.herokuapp.com/collections/chatapptry/',
 			myMessage
@@ -54,10 +64,6 @@ $(document).on('ready', function() {
 	setInterval(getMessages, 500);
 
 	getMessages();
-
-	$('button').click(function() {
-    	$('button').addClass('onClick');
-	});
 
 
 });
