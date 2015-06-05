@@ -15,6 +15,9 @@ $(document).on('ready', function() {
 	var myRouter = new app();
 	Backbone.history.start();
 
+	$('.page').hide();
+	$('#user-page').show();
+
 	$('#my-button').on('click', onButtonClick);
 
 	function onButtonClick(e) {

@@ -5,13 +5,17 @@
 	<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-	<div id="chat">
-		
+	<div class="page" id="user-page">
+		<label id="user-label">CHOOSE A USERNAME</label>
+		<input type="text" id="name">
+		<button id="name-btn">let's chat!</button>
 	</div>
-	<form>
-		<input type="text" placeholder="Username" id="name">
+
+	<form class="page" id="chat-page">
 		<input type="text" placeholder="Message" id="message">
-		<button id="my-button">Chat!</button>
+		<button id="my-button">Send</button>
+		<div id="chat">
+		</div>
 	</form>
 
 	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
