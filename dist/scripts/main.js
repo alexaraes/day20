@@ -64,8 +64,6 @@ $(document).on('ready', function() {
 			'json'
 		);
 	}
-	
-	var theZIndex = 0;
 
 	function onMessagesReceived(messageList) {
 		var htmlString = '';
@@ -73,9 +71,10 @@ $(document).on('ready', function() {
 			var message = messageList[i-1];
 			if(message.hasOwnProperty('username') && message.hasOwnProperty('post')) {
 				htmlString += '<div class="messages">'+message.username+' - '+message.post+'</div>';
+				$(".messages").css("z-index", i);
 			}
 		}
-		$(".messages").css("z-index", theZIndex++);
+		
 		$('#chat').html(htmlString);
 	}
 

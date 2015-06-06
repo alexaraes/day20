@@ -86,7 +86,7 @@ button {
 	overflow: auto;
 	margin-right: auto;
 	margin-left: auto;
-	height: 520px;
+	height: 420px;
 	width: 100%;
 	border: 3px solid white;
 	margin-top: 15px;
@@ -115,4 +115,11 @@ form {
 .messages {
 	font-size: 30px;
 	margin-left: 20px;
+}
+
+.nav-bar {
+	float: right;
+	height: 50px;
+	width: 400px;
+	background-color: red;
 }
