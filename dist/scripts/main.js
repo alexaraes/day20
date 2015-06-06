@@ -22,22 +22,22 @@ $(document).on('ready', function() {
 
 	var myRouter = new app();
 	Backbone.history.start();
-	var $userName = '';
-
-	$('#name-btn').click(function() {
-		$userName = $("#name").val();
-		alert($userName);
-		myRouter.navigate('chat', {trigger: true});
-		alert($userName);
-	});
 
 	$('#my-button').click(onButtonClick);
 	// $('#name-btn').submit();
 	$('#my-button').submit();
 
+	$userName = $("#name").val();
+
+	$('#name-btn').click(function() {
+	$userName = $("#name").val();
+	alert($userName);
+	myRouter.navigate('chat', {trigger: true});
+	alert($userName);
+	});
 
 	function onButtonClick(e) {
-		// $userName = $("#name").val();
+		
 		// alert(('#name').val())
 		alert('name: '+$userName);
 		var myMessage = {
