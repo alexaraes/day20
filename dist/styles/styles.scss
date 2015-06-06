@@ -15,10 +15,9 @@ body {
 input {
 	background-color: $secondary-color;
 	border: none;
-
-	input:focus {
-		outline: none; 
-	}
+	font-size: 30px;
+	padding-left: 10px;
+	padding-bottom: 5px;
 }
 
 button {
@@ -34,7 +33,7 @@ button {
 	padding-top: 10%;
 }
 
-#user-label, #name, #name-btn {
+#user-label, #name, #name-btn, #my-button {
 	display: block;
 	text-align: center;
 	margin-left: auto;
@@ -54,6 +53,7 @@ button {
 
 #user-label {
 	font-size: 40px;
+	margin-top: 15%;
 }
 
 #name {
@@ -85,4 +85,33 @@ button {
 #chat {
 	margin-right: auto;
 	margin-left: auto;
+	height: 520px;
+	width: 100%;
+	border: 3px solid white;
+	margin-top: 15px;
+}
+
+#my-button {
+	margin-bottom: 50px;
+	width: 180px;
+	height: 35px;
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
+input:focus {
+		outline: none; 
+	}
+
+button:focus {
+	outline: none;
+}
+
+form {
+	display: block;
+}
+
+.messages {
+	font-size: 30px;
+	margin-left: 20px;
 }

@@ -28,33 +28,41 @@ $(document).on('ready', function() {
 	});
 
 	$('#my-button').click(onButtonClick);
+	$('#name-btn').submit();
+	$('#my-button').submit();
 
 	function onButtonClick(e) {
 		var myMessage = {
 			username: $('#name').val(),
-			text: $('#message').val()
+			post: $('#message').val(),
+			chatroom: ''
 		};
-		
+
 		$.post(
-			'http://tiny-pizza-server.herokuapp.com/collections/chatapptry/',
+			'http://fathomless-savannah-3396.herokuapp.com/messages/create',
 			myMessage
 		);
+
+		$('#message').val('');
+
 	}
-	
+
 	function getMessages() {
 		$.get(
-			'http://tiny-pizza-server.herokuapp.com/collections/chatapptry/',
+			'http://fathomless-savannah-3396.herokuapp.com/messages',
 			onMessagesReceived,
 			'json'
 		);
 	}
+	
+	
 
 	function onMessagesReceived(messageList) {
 		var htmlString = '';
 		for(var i=messageList.length; i>0; i--) {
 			var message = messageList[i-1];
-			if(message.hasOwnProperty('username') && message.hasOwnProperty('text')) {
-				htmlString += '<div>'+message.username+' - '+message.text+'</div>';
+			if(message.hasOwnProperty('username') && message.hasOwnProperty('post')) {
+				htmlString += '<div class="messages">'+message.username+' - '+message.post+'</div>';
 			}
 		}
 
