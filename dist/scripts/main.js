@@ -22,21 +22,31 @@ $(document).on('ready', function() {
 
 	var myRouter = new app();
 	Backbone.history.start();
+	var $userName = '';
 
 	$('#name-btn').click(function() {
+		$userName = $("#name").val();
+		alert($userName);
 		myRouter.navigate('chat', {trigger: true});
+		alert($userName);
 	});
 
 	$('#my-button').click(onButtonClick);
-	$('#name-btn').submit();
+	// $('#name-btn').submit();
 	$('#my-button').submit();
 
+
 	function onButtonClick(e) {
+		// $userName = $("#name").val();
+		// alert(('#name').val())
+		alert('name: '+$userName);
 		var myMessage = {
-			username: $('#name').val(),
+			username: $userName,
 			post: $('#message').val(),
 			chatroom: ''
 		};
+
+
 
 		$.post(
 			'http://fathomless-savannah-3396.herokuapp.com/messages/create',
@@ -55,7 +65,7 @@ $(document).on('ready', function() {
 		);
 	}
 	
-	
+	var theZIndex = 0;
 
 	function onMessagesReceived(messageList) {
 		var htmlString = '';
@@ -65,11 +75,11 @@ $(document).on('ready', function() {
 				htmlString += '<div class="messages">'+message.username+' - '+message.post+'</div>';
 			}
 		}
-
+		$(".messages").css("z-index", theZIndex++);
 		$('#chat').html(htmlString);
 	}
 
-	setInterval(getMessages, 500);
+	setInterval(getMessages, 300);
 
 	getMessages();
 

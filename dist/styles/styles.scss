@@ -43,9 +43,9 @@ button {
 	color: $text-color;
 }
 
-.page {
-	display: none;
-}
+// .page {
+// 	display: none;
+// }
 
 #name, #name-btn {
 	background-color: $secondary-color;
@@ -83,6 +83,7 @@ button {
 }
 
 #chat {
+	overflow: auto;
 	margin-right: auto;
 	margin-left: auto;
 	height: 520px;

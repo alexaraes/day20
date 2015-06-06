@@ -31,9 +31,6 @@ button {
   border: none;
   color: white; }
 
-.page {
-  display: none; }
-
 #name, #name-btn {
   background-color: #1d5b6d; }
 
@@ -65,6 +62,7 @@ button {
   margin-top: 30px; }
 
 #chat {
+  overflow: auto;
   margin-right: auto;
   margin-left: auto;
   height: 520px;
