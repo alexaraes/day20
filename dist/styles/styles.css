@@ -22,7 +22,7 @@ button {
 #user-div {
   padding-top: 10%; }
 
-#user-label, .name, .name-btn, #my-button {
+#user-label, .name, .newname, .name-btn, .changename-btn, #my-button {
   display: block;
   text-align: center;
   margin-left: auto;
@@ -31,19 +31,19 @@ button {
   border: none;
   color: white; }
 
-.name, .name-btn {
+.name, .newname, .name-btn {
   background-color: #1d5b6d; }
 
 #user-label {
   font-size: 40px;
   margin-top: 15%; }
 
-.name {
+.name, .newname {
   width: 300px;
   height: 50px;
   font-size: 25px; }
 
-.name-btn {
+.name-btn, .changename-btn {
   width: 150px;
   height: 25px;
   font-size: 20px;
@@ -62,13 +62,13 @@ button {
   margin-top: 30px; }
 
 #chat {
-  overflow: auto;
+  overflow: scroll;
   margin-right: auto;
   margin-left: auto;
   height: 420px;
-  width: 100%;
+  width: 98%;
   border: 3px solid white;
-  margin-top: 15px;
+  margin-top: 20px;
   clear: both; }
 
 #my-button {
@@ -89,13 +89,28 @@ form {
 
 .messages {
   font-size: 25px;
-  margin-left: 20px; }
+  margin-left: 20px;
+  position: relative;
+  bottom: 0; }
 
 .nav-bar {
   float: right;
   height: 50px;
   width: 150px;
   margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center; }
+
+#change-span {
+  font-size: 14px; }
+
+#current-name {
+  font-size: 18px; }
+
+#time {
+  display: inline-block;
+  font-size: 12px;
+  width: 115px; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -24,7 +24,6 @@ $(document).on('ready', function() {
 			$('.page').hide();
 			$('#user-page').hide();
 			$('#chat-page').show();
-			alert('name: '+ theUserName);
 		},
 
 		changeName: function() {
@@ -45,16 +44,22 @@ $(document).on('ready', function() {
 		$userName = $(".name").val();
 		
 		myRouter.navigate('chat', {trigger: true});
-		alert($userName);
 		
 		$('.name-btn').submit();
+	});
+	
+	$('.changename-btn').click(function() {
+		$userName = $(".newname").val();
+		
+		myRouter.navigate('chat', {trigger: true});
+		
+		$('.changename-btn').submit();
 	});
 	
 	$('#my-button').click(onButtonClick);
 
 	function onButtonClick(e) {
 		
-		alert('name: '+ theUserName);
 		
 		$('#my-button').submit();
 		
@@ -84,21 +89,22 @@ $(document).on('ready', function() {
 
 	function onMessagesReceived(messageList) {
 		var htmlString = '';
-		for(var i=messageList.length; i>0; i--) {
-			var message = messageList[i-1];
+		for(var i=0; i<messageList.length; i++) {
+			var message = messageList[i];
+			var messageTime = message.created_at;
+
 			if(message.hasOwnProperty('username') && message.hasOwnProperty('post')) {
-				htmlString += '<div class="messages">'+message.username+' - '+message.post+'</div>';
-				$(".messages").css("z-index", i);
+				htmlString += '<div class="messages">' + '<div id="time">' + "[" + moment(messageTime).startOf(messageTime).fromNow() + "]</div> " +message.username+' - '+message.post+'</div>';
 			}
 		}
 		
 		$('#chat').html(htmlString);
 		$('#current-name').html('You are: ' + theUserName)
+		$('#chat').scrollTo('max');
 	}
 
 	setInterval(getMessages, 300);
 
 	getMessages();
-
 
 });
