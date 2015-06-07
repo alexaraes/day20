@@ -104,7 +104,7 @@ $(document).on('ready', function() {
 			var messageTime = message.created_at;
 
 			if(message.hasOwnProperty('username') && message.hasOwnProperty('post')) {
-				htmlString += '<div class="messages">' + '<div id="time">' + "[" + moment(messageTime).startOf(messageTime).fromNow() + "]</div> " +message.username+' - '+message.post+'</div>';
+				htmlString += '<div class="messages">' + '<div id="time">' + "[" + moment(messageTime).startOf(messageTime).fromNow() + "]</div> " + message.username + ' - ' + '<span class="posted-message">' +message.post + '</span>' + '</div>';
 			}
 		}
 		
