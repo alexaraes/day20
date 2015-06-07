@@ -1,6 +1,7 @@
 
 var $userName;
 var theUserName;
+var soundPlay = 0;
 
 
 $(document).on('ready', function() {
@@ -70,7 +71,6 @@ $(document).on('ready', function() {
 
 	function onButtonClick(e) {
 		
-		
 		$('#my-button').submit();
 		
 		
@@ -87,6 +87,9 @@ $(document).on('ready', function() {
 
 		$('#message').val('');
 
+		var snd = new Audio("sounds/sounds-903-shut-your-mouth.mp3"); // buffers automatically when created
+		snd.play();
+
 	}
 
 	function getMessages() {
@@ -99,6 +102,12 @@ $(document).on('ready', function() {
 
 	function onMessagesReceived(messageList) {
 		var htmlString = '';
+
+		if(soundPlay > messageList.length) {
+			var snd = new Audio("sounds/sounds-903-shut-your-mouth.mp3"); // buffers automatically when created
+			snd.play();
+		}
+
 		for(var i=0; i<messageList.length; i++) {
 			var message = messageList[i];
 			var messageTime = message.created_at;
@@ -107,7 +116,10 @@ $(document).on('ready', function() {
 				htmlString += '<div class="messages">' + '<div id="time">' + "[" + moment(messageTime).startOf(messageTime).fromNow() + "]</div> " + message.username + ' - ' + '<span class="posted-message">' +message.post + '</span>' + '</div>';
 			}
 		}
+
+		soundPlay = messageList.length;
 		
+
 		$('#chat').html(htmlString);
 		$('#current-name').html('You are: ' + theUserName)
 		$('#chat').scrollTo('max');
