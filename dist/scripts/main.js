@@ -8,31 +8,36 @@ $(document).on('ready', function() {
 	var app = Backbone.Router.extend({
 		routes: {
 			'': 'home',
-			'chat': 'chat',
-			'newname': 'changeName'
+			'home': 'home',
+			'chat/:user': 'chat',
+			'newname': 'changeName',
+			'leaders': 'leaders'
 		}, 
 
 		home: function() {
 			$('.page').hide();
-			$('#chat-page').hide();
 			$('#user-page').show();
 		}, 
 
-		chat: function() {
-			theUserName = $userName;
+		chat: function(user) {
+			theUserName = user;
 			
 			$('.page').hide();
-			$('#user-page').hide();
 			$('#chat-page').show();
 		},
 
 		changeName: function() {
 			theUserName = $userName;
 
-			$('.page').show();
-			$('#chat-page').hide();
-			$('#user-page').hide();
-			$('#new-name').show();
+			$('.page').hide();
+			$('#newname').show();
+		},
+
+		leaders: function() {
+			$('.page').hide();
+			$('#leaderboards').show();
+			getTopUsers();
+			getRecentUsers();
 		}
 
 	});
@@ -41,19 +46,23 @@ $(document).on('ready', function() {
 	Backbone.history.start();
 
 	$('.name-btn').click(function() {
-		$userName = $(".name").val();
+		$userName = $("#testname").val();
 		
-		myRouter.navigate('chat', {trigger: true});
+		myRouter.navigate('chat/'+$userName, {trigger: true});
 		
 		$('.name-btn').submit();
 	});
 	
 	$('.changename-btn').click(function() {
-		$userName = $(".newname").val();
+		var changeUserName = $("#changing-name").val();
 		
-		myRouter.navigate('chat', {trigger: true});
+		myRouter.navigate('chat/'+changeUserName, {trigger: true});
 		
 		$('.changename-btn').submit();
+	});
+
+	$("#back-btn").on("click", function(){
+		myRouter.navigate("chat/"+theUserName, {trigger:true})
 	});
 	
 	$('#my-button').click(onButtonClick);
@@ -101,6 +110,58 @@ $(document).on('ready', function() {
 		$('#chat').html(htmlString);
 		$('#current-name').html('You are: ' + theUserName)
 		$('#chat').scrollTo('max');
+	}
+
+	function getTopUsers() {
+		$.get(
+			'http://fathomless-savannah-3396.herokuapp.com/messages/fanatics',
+			topUsersReceived,
+			'json'
+		);
+	}
+
+	function topUsersReceived(users) {
+		var userString = '';
+		
+			for(var name in users) {
+				userString += '<div class="users">' + name + ": " + users[name] +'</div>';
+			}
+		
+		
+		$('#top-users').append(userString);
+
+	}
+
+	function getRecentUsers() {
+		$.get(
+			'http://fathomless-savannah-3396.herokuapp.com/messages/recent_users',
+			recentUsersReceived,
+			'json'
+		);
+	}
+
+	function recentUsersReceived(recUsers) {
+		var recentString = '';
+		
+		var userObj = {};
+
+		for (var i=0; i<recUsers.length; i++) {
+			var activeUserName = recUsers[i].username;
+
+			if(!userObj.hasOwnProperty(activeUserName)) {
+				userObj[activeUserName] = activeUserName;
+			}
+			else {
+				userObj[activeUserName]++;
+			}
+		}
+
+		for (prop in userObj) {
+			console.log(prop);
+			recentString += '<div class="users">' + prop +'</div>';
+			$('#active-users').html(recentString);
+		}
+		
 	}
 
 	setInterval(getMessages, 300);

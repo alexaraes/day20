@@ -9,15 +9,20 @@
 	<div class="page" id="user-page">
 		<form>
 			<label id="user-label">CHOOSE A USERNAME</label>
-			<input type="text" class="name" autofocus="autofocus">
+			<input type="text" id="testname" class="name" autofocus="autofocus">
 			<button type="submit" class="name-btn">let's chat!</button>
 		</form>
 	</div>
 
 	<div class="page" id="chat-page">
 		<div class="nav-bar">
-			<span id="current-name"></span><br>
-			<a href="#newname"><span id="change-span">Change name</span></a>
+			<div id="leader-link"><a href="#leaders">Leaderboards</a></div>
+		</div>
+		<div class="nav-bar">
+			<div id="name-div">
+				<span id="current-name"></span><br>
+				<a href="#newname"><span id="change-span">Change name</span></a>
+			</div>
 		</div>
 		<div id="chat">
 		</div>
@@ -30,9 +35,17 @@
 	<div class="page" id="newname">
 		<form>
 			<label id="user-label">CHOOSE A NEW USERNAME</label>
-			<input type="text" class="newname" autofocus="autofocus">
+			<input type="text" id="changing-name"class="newname" autofocus="autofocus">
 			<button type="submit" class="changename-btn">back to chat</button>
 		</form>
+	</div>
+
+	<div class="page" id="leaderboards">
+		<div class="title">LEADERBOARDS</div>
+		<div id="back-btn">back to chat</a></div>
+		<div id="top-users">TOP USERS</div>
+		<div id="top-chats">TOP CHATROOMS</div>
+		<div id="active-users">ACTIVE USERS IN LAST 4 HOURS</div>
 	</div>
 
 	<script type="text/javascript" src="bower_components/bower_components/moment/moment.js"></script>
