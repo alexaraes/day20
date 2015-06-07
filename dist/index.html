@@ -9,18 +9,28 @@
 		<form>
 			<label id="user-label">CHOOSE A USERNAME</label>
 			<input type="text" id="name">
-			<button type="submit" id="name-btn">let's chat!</button>
+			<button type="submit" class="name-btn">let's chat!</button>
 		</form>
 	</div>
 
 	<div class="page" id="chat-page">
-		<!-- <div class="nav-bar"></div>
-		<div class="nav-bar"></div> -->
+		<div class="nav-bar">
+			<span id="current-name"></span><br>
+			<a href="#newname"><span>Change name</span></a>
+		</div>
 		<div id="chat">
 		</div>
-		<form type="submit">
+		<form>
 			<input type="text" id="message">
 			<button id="my-button">Send</button>
+		</form>
+	</div>
+
+	<div class="page" id="newname">
+		<form>
+			<label id="user-label">CHOOSE A NEW USERNAME</label>
+			<input type="text" id="name">
+			<button type="submit" class="name-btn">back to chat</button>
 		</form>
 	</div>
 

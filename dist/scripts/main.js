@@ -1,9 +1,15 @@
+
+var $userName;
+var theUserName;
+
+
 $(document).on('ready', function() {
 
 	var app = Backbone.Router.extend({
 		routes: {
 			'': 'home',
-			'chat': 'chat'
+			'chat': 'chat',
+			'newname': 'changeName'
 		}, 
 
 		home: function() {
@@ -13,9 +19,21 @@ $(document).on('ready', function() {
 		}, 
 
 		chat: function() {
+			theUserName = $userName;
+			
 			$('.page').hide();
 			$('#user-page').hide();
 			$('#chat-page').show();
+			alert('name: '+ theUserName);
+		},
+
+		changeName: function() {
+			theUserName = $userName;
+
+			$('.page').show();
+			$('#chat-page').hide();
+			$('#user-page').hide();
+			$('#new-name').show();
 		}
 
 	});
@@ -23,30 +41,29 @@ $(document).on('ready', function() {
 	var myRouter = new app();
 	Backbone.history.start();
 
-	$('#my-button').click(onButtonClick);
-	// $('#name-btn').submit();
-	$('#my-button').submit();
-
-	$userName = $("#name").val();
-
-	$('#name-btn').click(function() {
-	$userName = $("#name").val();
-	alert($userName);
-	myRouter.navigate('chat', {trigger: true});
-	alert($userName);
+	$('.name-btn').click(function() {
+		$userName = $("#name").val();
+		
+		myRouter.navigate('chat', {trigger: true});
+		alert($userName);
+		
+		$('.name-btn').submit();
 	});
+	
+	$('#my-button').click(onButtonClick);
 
 	function onButtonClick(e) {
 		
-		// alert(('#name').val())
-		alert('name: '+$userName);
+		alert('name: '+ theUserName);
+		
+		$('#my-button').submit();
+		
+		
 		var myMessage = {
-			username: $userName,
+			username: theUserName,
 			post: $('#message').val(),
 			chatroom: ''
 		};
-
-
 
 		$.post(
 			'http://fathomless-savannah-3396.herokuapp.com/messages/create',
@@ -76,6 +93,7 @@ $(document).on('ready', function() {
 		}
 		
 		$('#chat').html(htmlString);
+		$('#current-name').html('You are: ' + theUserName)
 	}
 
 	setInterval(getMessages, 300);

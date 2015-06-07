@@ -33,7 +33,7 @@ button {
 	padding-top: 10%;
 }
 
-#user-label, #name, #name-btn, #my-button {
+#user-label, #name, .name-btn, #my-button {
 	display: block;
 	text-align: center;
 	margin-left: auto;
@@ -62,7 +62,7 @@ button {
 	font-size: 25px;
 }
 
-#name-btn {
+.name-btn {
 	width: 150px;
 	height: 25px;
 	font-size: 20px;
@@ -90,6 +90,7 @@ button {
 	width: 100%;
 	border: 3px solid white;
 	margin-top: 15px;
+	clear: both;
 }
 
 #my-button {
@@ -101,8 +102,8 @@ button {
 }
 
 input:focus {
-		outline: none; 
-	}
+	outline: none; 
+}
 
 button:focus {
 	outline: none;
@@ -120,6 +121,7 @@ form {
 .nav-bar {
 	float: right;
 	height: 50px;
-	width: 400px;
-	background-color: red;
+	width: 150px;
+	margin-right: 20px;
+	text-align: center;
 }
