@@ -38,6 +38,7 @@ $(document).on('ready', function() {
 			$('#leaderboards').show();
 			getTopUsers();
 			getRecentUsers();
+			getTopChats();
 		}
 
 	});
@@ -76,7 +77,7 @@ $(document).on('ready', function() {
 		var myMessage = {
 			username: theUserName,
 			post: $('#message').val(),
-			chatroom: ''
+			chatroom: 'OG Chatroom'
 		};
 
 		$.post(
@@ -121,14 +122,14 @@ $(document).on('ready', function() {
 	}
 
 	function topUsersReceived(users) {
-		var userString = '';
+		var userString = '<h3>TOP USERS</h3>';
 		
 			for(var name in users) {
 				userString += '<div class="users">' + name + ": " + users[name] +'</div>';
 			}
 		
 		
-		$('#top-users').append(userString);
+		$('#top-users').html(userString);
 
 	}
 
@@ -141,7 +142,7 @@ $(document).on('ready', function() {
 	}
 
 	function recentUsersReceived(recUsers) {
-		var recentString = '';
+		var recentString = '<h3>MOST RECENT USERS</h3>';
 		
 		var userObj = {};
 
@@ -162,6 +163,25 @@ $(document).on('ready', function() {
 			$('#active-users').html(recentString);
 		}
 		
+	}
+
+	function getTopChats() {
+		$.get(
+			'http://fathomless-savannah-3396.herokuapp.com/messages/top_chatrooms',
+			topChatsReceived,
+			'json'
+		);
+	}
+
+	function topChatsReceived(chats) {
+		var chatString = '<h3>TOP CHATROOMS BY MESSAGES</h3>';
+		
+			for(var name in chats) {
+				chatString += '<div class="users">' + name + ": " + chats[name] +'</div>';
+			}
+		
+		$('#top-chats').html(chatString);
+
 	}
 
 	setInterval(getMessages, 300);
