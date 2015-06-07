@@ -33,7 +33,7 @@ button {
 	padding-top: 10%;
 }
 
-#user-label, #name, .name-btn, #my-button {
+#user-label, .name, .name-btn, #my-button {
 	display: block;
 	text-align: center;
 	margin-left: auto;
@@ -47,7 +47,7 @@ button {
 // 	display: none;
 // }
 
-#name, #name-btn {
+.name, .name-btn {
 	background-color: $secondary-color;
 }
 
@@ -56,7 +56,7 @@ button {
 	margin-top: 15%;
 }
 
-#name {
+.name {
 	width: 300px;
 	height: 50px;
 	font-size: 25px;

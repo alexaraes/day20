@@ -42,7 +42,7 @@ $(document).on('ready', function() {
 	Backbone.history.start();
 
 	$('.name-btn').click(function() {
-		$userName = $("#name").val();
+		$userName = $(".name").val();
 		
 		myRouter.navigate('chat', {trigger: true});
 		alert($userName);
